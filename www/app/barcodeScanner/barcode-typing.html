@@ -1,0 +1,82 @@
+<!-- barcode-typing.html -->
+<!-- view title -->
+<ion-view view-title="Search Barcode">
+	<ion-content>	
+    <!-- search form -->
+    <form id="myForm" class="form-inline form-search" name="myForm">
+      <div class="search-online">
+        <!-- search input -->
+        <label><h2 class="title">Search for </h2>
+        	<label class="item item-input">
+    				<i class="icon ion-ios7-search placeholder-icon"></i>
+    				<input type="text" placeholder="Search" ng-model="searchUpca">
+            <!-- clear "x" - does not work yet, fix it later -->
+    				<button class="button button-clear icon ion-ios7-close-empty" ng-click="clearSearchBarcode()"></button>
+    			</label>
+        </label> 
+        <!-- search button - do the search action -->
+        <button class="button button-block button-royal" ng-click="doSearchBarcode(searchUpca)"> Search</button>
+      </div>
+    </form>
+
+    <ion-list>
+      <!-- if scan does not start or does not get result back from database or getting data -->
+      <ion-item ng-show="online.loading">
+        <i class="icon ion-load-a">Loading</i>
+      </ion-item>
+      <!-- if scan does not start or does not get result back from database or getting data -->
+      <ion-item ng-hide="online.getOnline || localAtt.getLocal || online.loading">
+        No result.
+      </ion-item>
+      <!-- if the data back, list data -->
+      <ion-item ng-show="online.getOnline || localAtt.getLocal">
+        <div class="list card">
+          <!-- online search result -->
+          <!-- list the image and title, category-->
+
+          <!-- game -->
+          <div class="onlinegame" ng-show="online.onlineGame"  ng-click="insertGame(eanResult)">
+            <h1 class="title">Online Game</h1>
+            <div class="item item-thumbnail-left">
+              <img ng-src="{{eanResult.image}}" style="width: 100%; height: 100% "/>
+              <h2>{{eanResult.attributes.product}}</h2>
+              <p>Category: {{eanResult.attributes.category_text_long}}</p>
+            </div>
+            <!-- list description of the product -->
+            <div class="item item-body">
+              <!-- feature -->
+              <p>Feature:</p>
+              <div ng-bind-html="eanResult.attributes.features"></div>
+              <!-- display description trust json codes as html codes -->
+              <p>Description: </p>
+              <div ng-bind-html="eanResult.attributes.long_desc"></div>
+            </div>
+          </div>
+          <!-- game -->
+          <!-- online search result -->
+          <!-- local collection -->
+          <!-- game -->
+          <div class="localgame" ng-show="localAtt.localGame">
+            <h1 class="title">Local Game</h1>
+            <div class="item item-thumbnail-left">
+              <img ng-src="{{game.img}}" style="width: 100%; height: 100% "/>
+              <h2>{{game.title}}</h2>
+              <p>Category: {{game.category}}</p>
+            </div>
+            <!-- list description of the product -->
+            <div class="item item-body">
+              <!-- feature -->
+              <p>Feature:</p>
+              <div ng-bind-html="game.feature"></div>
+              <!-- display description trust json codes as html codes -->
+              <p>Description: </p>
+              <div ng-bind-html="game.description"></div>
+            </div>
+          </div>
+          <!-- game -->
+          <!-- local collection -->
+        </div>
+ 			</ion-item>
+ 		</ion-list>
+	</ion-content>
+</ion-view>

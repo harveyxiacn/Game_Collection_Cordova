@@ -1,0 +1,66 @@
+<!-- menu-layout.html -->
+<ion-side-menus>
+    <!-- Center content -->
+    <ion-side-menu-content>
+        <ion-nav-bar class="bar-royal">
+            <ion-nav-back-button>
+            </ion-nav-back-button>
+            <!-- slidemenu toggle button -->
+            <ion-nav-buttons side="left">
+                <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+            </ion-nav-buttons>
+        </ion-nav-bar>
+        <ion-nav-view name="mainContent" animation="slide-left-right"></ion-nav-view>
+    </ion-side-menu-content>
+
+    <!-- Left menu -->
+    <ion-side-menu side="left">
+        <header class="bar bar-header bar-royal">
+            <h1 class="title">Options</h1>
+        </header>
+        <ion-content class="has-header">
+            <!-- route to different pages -->
+            <ion-list>
+                <ion-item nav-clear menu-close ui-sref="app.home">
+                    <i class="icon icon-home"></i>
+                    Home
+                </ion-item>
+                <!-- <ion-item nav-clear menu-close ui-sref="app.books">
+                    <i class="icon icon-book"></i>
+                    Books
+                </ion-item>
+                <ion-item nav-clear menu-close ui-sref="app.book-result">
+                    <i class="icon icon-book"></i>
+                    Books result
+                </ion-item>
+                <ion-item nav-clear menu-close ui-sref="app.movies">
+                    <i class="icon icon-movie"></i>
+                    Movies
+                </ion-item> -->
+                <ion-item nav-clear menu-close ui-sref="app.games">
+                    <i class="icon icon-game"></i>
+                    Games
+                </ion-item>
+                <ion-item nav-clear menu-close ui-sref="app.scanner">
+                    <i class="icon ion-qr-scanner"></i>
+                    Barcode Scanner
+                </ion-item>
+                <ion-item nav-clear menu-close ui-sref="app.test">
+                    Root
+                </ion-item>
+                <!-- <ion-item nav-clear menu-close ui-sref="app.barcode-typing">
+                    <i class="icon icon-book"></i>
+                    Barcode typing search
+                </ion-item> -->
+                <!-- <ion-item nav-clear menu-close ui-sref="app.search">
+                    <i class="icon ion-search"></i>
+                    Search
+                </ion-item> -->
+                <ion-item nav-clear menu-close ui-sref="app.setting">
+                    <i class="icon ion-wrench"></i>
+                    Settings
+                </ion-item>
+            </ion-list>
+        </ion-content>
+    </ion-side-menu>
+</ion-side-menus>

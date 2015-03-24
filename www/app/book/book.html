@@ -1,0 +1,51 @@
+<!-- book.html -->
+<!-- list the books which are in database -->
+<ion-view view-title="Books">
+	<ion-content>
+		<!-- functional buttons -->
+		<div class="button-bar bar-royal">
+			<!-- add a new book - for now just input title/author/ISBN manually -->
+			<!-- <button class="button icon-left ion-plus" ng-click="newBook(books.length)">Add</button> -->
+			<button class="button icon-left ion-plus" ng-click="scanBarcode()">Add</button>
+			<!-- scan a barcode to get books information -->
+			<button class="button icon-left ion-qr-scanner" ui-sref="app.scanner">Scan</button>
+			<!-- toggle for reoder mode -->
+			<button class="button icon-left ion-arrow-move" ng-click="data.showReorder=!data.showReorder">Reorder</button>
+		</div>
+		<!-- <button class="button button-block" ng-click="clearLocalStorage()">Clear LocalStorage</button> -->
+		<!-- search box for saved books -->
+		<div id="search-box" class="bar bar-header item-input-inset">
+			<div class="item-input-wrapper">
+			  <i class="icon ion-ios7-search placeholder-icon"></i>
+			  <input type="search" placeholder="Search" ng-model="data.searchQuery">
+			  <i class="clear-search icon ion-ios7-close-empty" ng-click="clearSearch()"></i>
+			</div>
+		</div>
+
+		<ion-list show-delete="false" show-reorder="data.showReorder">
+			<!-- shows if there is no book in database -->
+			<ion-item ng-show="!books.length">
+				No book
+			</ion-item>
+			<!-- shows if there are some books in database, each item links to their detail page -->
+			<ion-item ng-show="books.length" ng-repeat="book in books | filter: data.searchQuery" class="item-remove-animate" href="#/app/book/{{book.id}}">
+				<div class="list card">
+					<!-- shows short information of the book with title, author and cover -->
+					<div class="item item-thumbnail-left">
+						<img ng-src="{{book.img}}" style="width: 100%; height: 100% ">
+						<h2>{{book.title}}</h2>
+						<p>{{book.author}}</p>
+						<!-- <p>{{book.id}}</p> -->
+					</div>
+					<!-- reorder button, shows if reorder mode toggle. - reorder does not work, fix soon -->
+					<ion-reorder-button class="ion-drag" on-reorder="onBookReorder(book, $fromIndex, $toIndex)"></ion-reorder-button>
+				</div>
+				<!-- swipe the card can see the option buttons -->
+				<!-- delete specific book -->
+            	<ion-option-button class="button-light icon icon-edit" ng-click="editBook(book.id)"></ion-option-button>
+            	<!-- edit specific book -->
+                <ion-option-button class="button-assertive icon ion-trash-a" ng-click="onBookDelete(book.id)"></ion-option-button>
+			</ion-item>
+		</ion-list>
+	</ion-content>
+</ion-view>

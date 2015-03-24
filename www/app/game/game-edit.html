@@ -1,0 +1,62 @@
+game-edit.html -->
+<!-- <ion-modal-view> -->
+<ion-view view-title="Edit Game">
+    <!-- Modal header bar -->
+    <!-- <ion-header-bar class="bar-royal">
+      <h1 class="title">Edit a Game</h1>
+    </ion-header-bar> -->
+    <ion-content>
+        <!-- <div class="padding">
+            <button class="button button-block button-royal" ng-click="closeEditGame()">Cancel</button>
+        </div> -->
+        <form ng-submit="onGameEdit(game)">
+            <div class="padding">
+                <button type="submit" class="button button-block button-royal">Update game</button>
+            </div>
+            <div class="list card">
+                <div class="item item-thumbnail-left">
+                    <img ng-src="{{game.image}}" style="width: 100%; height: 100% "/>
+                    <label class="item item-input">
+                        <div class="input-label">
+                          Name:
+                        </div>
+                        <input type="text" placeholder="{{game.title}}" ng-model="game.title">
+                    </label>
+                    <label class="item item-input item-select">
+                        <div class="input-label">
+                            Console: 
+                        </div>
+                        <select id="console" ng-model="game.console">
+                          <option value="choose console">Choose...</option>
+                          <option value="xbox 360">XBOX360</option>
+                          <option value="xbox one">XBOX ONE</option>
+                          <option value="ps2">PS2</option>
+                          <option value="ps3">PS3</option>
+                          <option value="ps4">PS4</option>
+                          <option value="wii">Wii</option>
+                          <option value="wii u">Wii U</option>
+                        </select>
+                    </label>
+                  
+                </div>
+                <!-- list description of the product -->
+                <div class="item item-body">
+                    Rating: {{game.rating}}
+                    <md-slider aria-label md-discrete ng-model="game.rating" step="1" min="0" max="5">
+                    </md-slider>
+                    <!-- feature -->
+                        Feature:
+                        <div ng-bind-html="game.feature"></div>
+                        <!-- <textarea class="item item-text-wrap" ng-model="game.feature" value="{{game.feature}}"></textarea> -->
+                </div>
+                <div class="item item-body">
+                <!-- display description trust json codes as html codes -->
+                    Description:
+                    <div ng-bind-html="game.description"></div>
+                    <!-- <textarea class="item item-text-wrap" ng-model="game.description" value="{{game.description}}"></textarea> -->
+                </div>
+            </div>
+        </form>
+    </ion-content>
+<!-- </ion-modal-view> -->
+</ion-view>

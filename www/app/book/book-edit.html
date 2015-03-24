@@ -1,0 +1,40 @@
+<!-- book-edit.html -->
+
+<ion-view view-title="Edit Details of Book">
+    <ion-content>
+        <form ng-submit="onBookEdit(book)">
+            <div class="list card">
+                <div class="item item-thumbnail-left">
+                   <img ng-src="{{book.img}}" style="width: 100%; height: 100% ">
+                </div>
+                <div class="list">
+                    <label class="item item-input">
+                        <p>Title</p>
+                        <!-- <input type="text" placeholder="keywords of title or ISBN"> -->
+                        <input type="text"  placeholder="{{book.title}}" ng-model="book.title">
+                    </label>
+                    <label class="item item-input">
+                        <p>Author:</p>
+                        <input type="text" placeholder="{{book.author}}" ng-model="book.author">
+                    </label>
+                </div>
+                <div class="item item-body">
+                    <!-- feature -->
+                    <label class="item item-input">
+                        <p>Feature:</p>
+                        <input type="text" placeholder="{{book.feature}}" ng-model="book.feature">
+                    </label>
+                    <label class="item item-input">
+                    <!-- display description trust json codes as html codes -->
+                        <p>Description: </p>
+                        <input type="text" placeholder="{{book.description}}" ng-model="book.description">
+                    </label>
+                </div>
+            </div>
+            <div class="padding">
+                <button type="submit" class="button button-block button-royal">Update book</button>
+            </div>
+        </form>
+        <button class="button button-clear button-block button-royal" ng-click="closeEditBook()">Cancel</button>
+    </ion-content>
+</ion-view>

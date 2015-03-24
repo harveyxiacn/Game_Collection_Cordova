@@ -1,0 +1,72 @@
+<!-- barcode-result.html -->
+<div class="modal">
+
+  <!-- Modal header bar -->
+  <ion-header-bar class="bar-royal">
+    <h1 class="title">Search result</h1>
+  </ion-header-bar>
+
+  <!-- Modal content area -->
+  <ion-content>
+    <div class="padding">
+      <button class="button button-block button-royal" ng-click="closeSearchResult()">Cancel</button>
+      </div>
+    <form ng-submit="insertGame(gameResult)">
+      <div class="padding">
+        <button type="submit" class="button button-block button-royal">Save</button>
+      </div>
+
+      <div class="list card">
+        <!-- online search game -->
+        <!-- list the image and title, category-->
+        <div class="item item-thumbnail-left">
+          <img ng-src="{{gameResult.image}}" style="width: 100%; height: 100% "/>
+          <label class="item item-input">
+            <div class="input-label">
+              Name:
+            </div>
+            <input type="text" placeholder="{{gameResult.title}}" ng-model="gameResult.title">
+          </label>
+          <label class="item item-input item-select">
+            <div class="input-label">
+                Console: 
+            </div>
+            <select id="console" ng-model="gameResult.console">
+              <option value="choose console">Choose...</option>
+              <option value="xbox 360">XBOX360</option>
+              <option value="xbox one">XBOX ONE</option>
+              <option value="ps2">PS2</option>
+              <option value="ps3">PS3</option>
+              <option value="ps4">PS4</option>
+              <option value="wii">Wii</option>
+              <option value="wii u">Wii U</option>
+              <option value="pc">PC</option>
+            </select>
+          </label>
+          
+        </div>
+        <!-- list description of the product -->
+        <div class="item item-body">
+          Rating: {{gameResult.rating}}
+          <md-slider aria-label md-discrete ng-model="gameResult.rating" step="1" min="0" max="5">
+          </md-slider>
+          <!-- feature -->
+          <div class="featuresDefine" ng-show="gameResult.featureDefined">
+            <ion-checkbox ng-model="gameResult.featureChecked" ng-check="gameResult.featureChecked">Feature</ion-checkbox>
+            <div class="features" ng-show="gameResult.featureChecked">
+              <div ng-bind-html="gameResult.feature"></div>
+            </div>
+          </div>
+          <!-- display description trust json codes as html codes -->
+          <div class="descriptionDefine" ng-show="gameResult.descriptionDefined">
+            <ion-checkbox ng-model="gameResult.descriptionChecked" ng-check="gameResult.descriptionChecked">Description</ion-checkbox>
+            <div class="description" ng-show="gameResult.descriptionChecked">
+              <div ng-bind-html="gameResult.description"></div>
+            </div>
+          </div>
+        </div>
+    </form>
+
+  </ion-content>
+
+</div>

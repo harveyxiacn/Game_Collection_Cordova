@@ -1,0 +1,79 @@
+/* Empty. Add your own CSS if you like */
+
+@font-face {
+    font-family: 'fontawesome';
+    src:url('../fonts/fontawesome-webfont.eot');
+    src:url('../fonts/fontawesome-webfont.eot') format('embedded-opentype'),
+        url('../fonts/fontawesome-webfont.woff') format('woff'),
+        url('../fonts/fontawesome-webfont.ttf') format('truetype'),
+        url('../fonts/fontawesome-webfont.svg') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+/* create class for using amazing font */
+.icon-edit:before {
+    font-family: "fontawesome";
+    content: "\f044";
+}
+
+.icon-home:before {
+    font-family: "fontawesome";
+    content: "\f015";
+}
+
+.icon-book:before {
+    font-family: "fontawesome";
+    content: "\f02d";
+}
+
+.icon-movie:before {
+    font-family: "fontawesome";
+    content: "\f1c8";
+}
+
+.icon-game:before {
+    font-family: "fontawesome";
+    content: "\f11b";
+}
+
+.icon-scan:before {
+    font-family: "fontawesome";
+    content: "\f1e5";
+}
+/* temp fit size of image */
+.logo {
+    width: auto;
+    height: 40px;
+}
+/* class for scanner image */
+.scanner-img {
+    padding-top: 10px;
+}
+
+.slider { 
+    height: 80%; 
+    text-align: center 
+}
+            
+.scroll { 
+    height: 100% 
+}
+
+.rating{
+  margin: 0;
+  padding: 0;
+  display: inline-block;
+  li {
+    padding: 1px;
+    color: #a9a9a9;
+    text-align: center;
+    font-weight: bold;
+    font-size: 20px;
+    list-style-type: none;
+    display: inline-block;
+    cursor: pointer;
+    &.filled {
+      color: #fd0; //#21568b
+    }
+  }
+}

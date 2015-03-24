@@ -1,0 +1,28 @@
+<!-- new-book.html -->
+
+<div class="modal">
+	<ion-header-bar class="bar-royal">
+		<h1 class="title">New Book</h1>
+	</ion-header-bar>
+
+	<ion-content>
+		<form ng-submit="createBook(book)">
+			<div class="list">
+				<label class="item item-input">
+					<!-- <input type="text" placeholder="keywords of title or ISBN"> -->
+					<input type="text" placeholder="Book Title" ng-model="book.title">
+				</label>
+				<label class="item item-input">
+					<input type="text" placeholder="Book Author" ng-model="book.author">
+				</label>
+				<label class="item item-input">
+					<input type="text" placeholder="ISBN" ng-model="book.isbn">
+				</label>
+			</div>
+			<div class="padding">
+				<button type="submit" class="button button-block button-royal">Create book</button>
+			</div>
+			<button class="button button-clear button-block button-royal" ng-click="closeNewBook()">Cancel</button>
+		</form>
+	</ion-content>
+</div>

@@ -1,0 +1,51 @@
+<!-- movie.html -->
+<!-- list the movies which are in database -->
+<ion-view view-title="Movies">
+	<ion-content>
+		<!-- functional buttons -->
+		<div class="button-bar bar-royal">
+			<!-- add a new movie - for now just input title/author/ISBN manually -->
+			<!-- <button class="button icon-left ion-plus" ng-click="newMovie(movies.length)">Add</button> -->
+			<button class="button icon-left ion-plus" ng-click="scanBarcode()">Add</button>
+			<!-- scan a barcode to get movies information -->
+			<button class="button icon-left ion-qr-scanner" ui-sref="app.scanner">Scan</button>
+			<!-- toggle for reoder mode -->
+			<button class="button icon-left ion-arrow-move" ng-click="data.showReorder=!data.showReorder">Reorder</button>
+		</div>
+		<!-- <button class="button button-block" ng-click="clearLocalStorage()">Clear LocalStorage</button> -->
+		<!-- search box for saved movies -->
+		<div id="search-box" class="bar bar-header item-input-inset">
+			<div class="item-input-wrapper">
+			  <i class="icon ion-ios7-search placeholder-icon"></i>
+			  <input type="search" placeholder="Search" ng-model="data.searchQuery">
+			  <i class="clear-search icon ion-ios7-close-empty" ng-click="clearSearch()"></i>
+			</div>
+		</div>
+
+		<ion-list show-delete="false" show-reorder="data.showReorder">
+			<!-- shows if there is no movie in database -->
+			<ion-item ng-show="!movies.length">
+				No movie
+			</ion-item>
+			<!-- shows if there are some movies in database, each item links to their detail page -->
+			<ion-item ng-show="movies.length" ng-repeat="movie in movies | filter: data.searchQuery" class="item-remove-animate" href="#/app/movie/{{movie.id}}">
+				<div class="list card">
+					<!-- shows short information of the movie with title, author and cover -->
+					<div class="item item-thumbnail-left">
+						<img ng-src="{{movie.img}}" style="width: 100%; height: 100% ">
+						<h2>{{movie.title}}</h2>
+						<p>{{movie.author}}</p>
+						<!-- <p>{{movie.id}}</p> -->
+					</div>
+					<!-- reorder button, shows if reorder mode toggle. - reorder does not work, fix soon -->
+					<ion-reorder-button class="ion-drag" on-reorder="onMovieReorder(movie, $fromIndex, $toIndex)"></ion-reorder-button>
+				</div>
+				<!-- swipe the card can see the option buttons -->
+				<!-- delete specific movie -->
+            	<ion-option-button class="button-light icon icon-edit" ng-click="editMovie(movie.id)"></ion-option-button>
+            	<!-- edit specific movie -->
+                <ion-option-button class="button-assertive icon ion-trash-a" ng-click="onMovieDelete(movie.id)"></ion-option-button>
+			</ion-item>
+		</ion-list>
+	</ion-content>
+</ion-view>
